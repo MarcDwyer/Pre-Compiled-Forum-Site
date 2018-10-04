@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #D4D9DD;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.reddead input{
+  border: 1px solid red;
+}
+.reddead textarea{
+  border: 1px solid red;
+}
+.fixer {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.remove {
+  height: 100px !important;
+  text-decoration: none;
+  color: black;
+}
+.remove:hover {
+  text-decoration: none;
+  color: black;
+}
+.posters:hover {
+  border: 1px solid black;
+}
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.thepost {
+  border-bottom: 1px solid #eee;
+}
+.comments {
+  border-left: none;
+  border-right: none;
+}
+.makewhite {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.loginmarg {
+  margin-right: 200px;
+}
+.google {
+  background-color: orange;
+}
+.profileview {
+  display: flex;
+  flex-direction: column;
+}
+.googlebut {
+  color: white;
+  background-color: #dd4b39;
+  margin-left: auto !important;
+  height: 100%;
+  border:none;
+
+}
+.googlebut:hover {
+ color: white;
+ background-color: #dd4b39;
+}
+.dropwider {  
+  text-align: center;
+  width: 200px;
+  top: 118%;
+  left: -75px;
+  border-radius: 5px;
+}
+.centergoogle {
+  margin: auto;
+}
+.red {
+  color: red;
+}
