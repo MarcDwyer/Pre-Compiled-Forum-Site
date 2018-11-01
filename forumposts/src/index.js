@@ -9,6 +9,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import './index.css';
 import PostsList from './containers/posts_list';
+// import PostShow from './containers/show_post';
+import UserPosts from './containers/userposts';
 
 
 
@@ -17,6 +19,7 @@ unregister();
 ReactDOM.render(<Provider store={createStoreWithMiddleware(reducers)}>
 <BrowserRouter>
 <Switch>
+<Route path='/user-posts' component={UserPosts} />
 <Route path='/' component={PostsList}/>
 </Switch>
 </BrowserRouter>

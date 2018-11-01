@@ -14,6 +14,7 @@ class PostShow extends Component {
   }
     componentDidMount() {
         const {id} = this.props.match.params;
+
         this.props.getPost(id);
 
         document.body.addEventListener('keydown', (e) => {
@@ -80,7 +81,7 @@ class PostShow extends Component {
         } else {
             const {user} = this.props;
             const username = user ? user.user : undefined;
-            this.props.postComment(this.state.viewedPost._id, comment.value, username);
+            this.props.postComment(this.props.post._id, comment.value, username);
             comment.placeholder = 'Comment Posted!'
             cmtbtn.textContent = 'Submitted!'
             comment.value = '';

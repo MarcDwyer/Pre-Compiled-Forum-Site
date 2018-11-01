@@ -10,7 +10,7 @@ import _ from 'lodash';
 
 class App extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
   }
   componentDidMount() {
     this.props.getPosts();
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <Route exact path='/posts/:id' component={PostShow} />
+        <Route path='/posts/:id' component={PostShow} />
       <div className="app">
       <div className="fix">
       {this.authTrue()}
@@ -29,7 +29,7 @@ class App extends Component {
       {this.renderPosts(this.addRoute)}
       </ul>
       </div>
-      </div> 
+      </div>
     );
   }
   renderPosts() {
