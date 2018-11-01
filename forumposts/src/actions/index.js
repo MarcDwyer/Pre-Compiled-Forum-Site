@@ -6,9 +6,11 @@ export const POST_POST = 'posterofposts';
 export const POST_COMMENT = 'postcoment';
 export const USER = 'getuser';
 export const DELETE_POST = 'del';
+export const USER_POSTS = 'ASDASDADSASD';
 
 
 export function getPosts() {
+  console.log('aaaaaa')
     const request = axios.get('/api/data');
     return {
         type: GET_POSTS,
@@ -20,6 +22,7 @@ export function createPost(post, callback) {
     const newPost = {
         username: post.username,
         title: post.title,
+        userId: post.userId,
         body: post.body,
         date: new Date()
     }
@@ -33,15 +36,13 @@ export function createPost(post, callback) {
     }
 }
 
-export function getPost(id) {
-    const req = axios.get(`/api/find`, {
-        params: {
-            _id: id
-        }
-    });
+export async function getPost(id) {
+    const fetchPost = await fetch(`/api/find/${id}`);
+    const dataPost = await fetchPost.json();
+
     return {
         type: GET_POST,
-        payload: req
+        payload: dataPost
     }
 }
 
@@ -53,7 +54,7 @@ export function postComment(id, comment, username) {
         user: newuser
     }
     const str = qs.stringify(obj);
-     axios.put('/api/add', str)    
+     axios.put('/api/add', str)
     return {
         type: POST_COMMENT,
         payload: obj
@@ -62,6 +63,7 @@ export function postComment(id, comment, username) {
 
 export function getUser() {
    const req = axios.get('/login');
+   if (!req) return;
 
    return {
        type: USER,
@@ -80,6 +82,14 @@ export function deletePoster(id, callback) {
      type: DELETE_POST,
      case: id
  }
+}
 
+export async function getUserPosts(userId) {
 
+  const fetchUser = await fetch(`/api/postquery/${userId}`);
+  const dataUser = await fetchUser.json();
+  return {
+    type: USER_POSTS,
+    payload: dataUser
+  }
 }

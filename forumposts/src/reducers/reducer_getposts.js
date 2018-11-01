@@ -1,4 +1,4 @@
-import {GET_POSTS, POST_POST, GET_POST, POST_COMMENT, DELETE_POST} from '../actions/index';
+import {GET_POSTS, POST_POST, GET_POST, POST_COMMENT, DELETE_POST, USER_POSTS} from '../actions/index';
 import update from 'immutability-helper';
 import _ from 'lodash';
 
@@ -15,7 +15,7 @@ export default function(state = {}, action) {
 
     switch(action.type) {
         case GET_POST:
-        return {...state, [action.payload.data._id]: action.payload.data };
+        return {...state, [action.payload._id]: action.payload};
     }
     switch(action.type) {
         case POST_COMMENT:
@@ -29,5 +29,9 @@ export default function(state = {}, action) {
         case DELETE_POST:
         return _.omit(state, action.payload);
     }
-    return state
+    switch(action.type) {
+        case USER_POSTS:
+        return action.payload;
+    }
+    return state;
 }

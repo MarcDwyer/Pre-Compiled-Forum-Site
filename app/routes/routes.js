@@ -13,7 +13,7 @@ module.exports = function(app, db) {
 })
 })
     app.post('/api/create', (req, res) => {
-        const obj = { username: req.body.username, title: req.body.title, body: req.body.body, comments: [], date: req.body.date};
+        const obj = { username: req.body.username, userId: req.body.userId, title: req.body.title, body: req.body.body, comments: [], date: req.body.date};
          db.collection('data').insert(obj, (err, result) => {
             if (err) {
                 res.send({'error': 'error has occured'})
@@ -22,8 +22,8 @@ module.exports = function(app, db) {
         }
 })
 })
-app.get('/api/find', (req, res) => {
-    let param = req.query._id;
+app.get('/api/find/:id', (req, res) => {
+    const param = (req.params.id);
      db.collection('data').findOne({'_id' : ObjectId(param)}, (err, result) => {
         if (err) {
             res.send({'error': 'error has occured'})
@@ -54,5 +54,15 @@ app.delete('/api/delete', (req, res) => {
             res.send(result.ops)
     }
 })
+})
+app.get('/api/postquery/:id', (req, res) => {
+  const param = req.params.id;
+  db.collection('data').find({userId: {$eq: param}}).toArray((err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(result);
+    }
+  })
 })
 }

@@ -29,22 +29,23 @@ renderAuth() {
     if (user) {
         return (
             <div className="profileview">
-            <a href="" target="_self" className="btn">Check Posts</a>
-            <a href="/auth/logout" target="_self" className="btn">Logout</a>
+            <Link to="/user-posts" target="_self" className="btn">Check Posts</Link>
+            <a href="http://localhost:5000/auth/logout" target="_self" className="btn">Logout</a>
             </div>
         )
     } else {
         return(
             <div className="centergoogle">
-            <a href="/auth/google" target="_self" className="btn btn-light googlebut align-middle">Sign in with Google+</a>
+            <a href="http://localhost:5000/auth/google" target="_self" className="btn btn-light googlebut align-middle">Sign in with Google+</a>
             </div>
         );
     }
 }
 }
-function getProps({user}) {
+function getProps({user, posts}) {
     return {
-        user
+        user,
+        posts
     };
 }
 

@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getPosts} from '../actions/index';
 import Navbar from '../components/navbar';
-import {Link} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
+import PostShow from './show_post';
+
 import _ from 'lodash';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props); 
+  }
   componentDidMount() {
     this.props.getPosts();
   }
@@ -14,32 +19,32 @@ class App extends Component {
     if (!this.props.posts) return (<h6>Loading...</h6>);
     return (
       <div>
-        <Navbar posts={this.props.posts} />
-      <div className="App container">
+        <Navbar />
+        <Route exact path='/posts/:id' component={PostShow} />
+      <div className="app">
       <div className="fix">
       {this.authTrue()}
       </div>
       <ul className='form-group cmt'>
-      {this.renderPosts()}
+      {this.renderPosts(this.addRoute)}
       </ul>
       </div>
-      </div>
+      </div> 
     );
   }
   renderPosts() {
     const {posts} = this.props;
    return _.map(posts, post => {
-    const path = `/posts/${post._id}`;
+   const path = `/posts/${post._id}`;
     return (
-      <div key={post._id || post.key} className="posts">
-        <Link className="remove" to={path}>
+
+      <Link to={path} key={post._id || post.key} className="posts">
       <li className="list-group-item posters">
       <div className="">
-      <h6><strong>{post.title}</strong></h6><small><span>created by <strong>{post.username}</strong></span></small></div>  
+      <h6><strong>{post.title}</strong></h6><small><span>created by <strong>{post.username}</strong></span></small></div>
       <small><span>{!post.comments ? '0' : post.comments.length} comments</span></small>
       </li>
-      </Link>
-      </div>
+    </Link>
    );
   })
 }
@@ -47,7 +52,9 @@ authTrue() {
   const {user} = this.props;
   if (user) {
     return (
-      <Link className="btn btn-primary help mt-3 mb-3" to="/create-post">Create Post</Link>
+      <div>
+      <Link className="btn btn-primary help mt-3 mb-3 ml-3" to="/create-post">Create Post</Link>
+      </div>
     );
   } else {
     return (

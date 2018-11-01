@@ -21,12 +21,12 @@ class CreatePost extends Component {
                 <Navbar />
                 <div className="container makewhite mt-3">
             <form className="form-group" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <Field 
+                <Field
                 name="title"
                 label="Title"
                 component={this.renderList}
                 />
-                <Field 
+                <Field
                 name="body"
                 label="Body"
                 component={this.renderList}
@@ -43,9 +43,9 @@ class CreatePost extends Component {
         const classer = field.input.name === 'body' ? ' givewidth' : '';
         if (field.input.name === 'body') {
             return (
-                <div  className= {'fixer' + className}> 
+                <div  className= {'fixer' + className}>
                 <label>{field.label}</label>
-                <textarea {...field.input} 
+                <textarea {...field.input}
                 type="text"
                 className={'form-control' + classer}
                 placeholder={field.meta.touched ? field.meta.error : ''}
@@ -56,9 +56,9 @@ class CreatePost extends Component {
             );
         } else {
             return (
-                <div  className= {'fixer' + className}> 
+                <div  className= {'fixer' + className}>
                 <label>{field.label}</label>
-                <input {...field.input} 
+                <input {...field.input}
                 type="text"
                 className={'form-control' + classer}
                 placeholder={field.meta.touched ? field.meta.error : ''}
@@ -70,6 +70,7 @@ class CreatePost extends Component {
     }
     onSubmit(values) {
         values.username = this.props.user.user;
+        values.userId = this.props.user.id;
         this.props.createPost(values, () => {
             this.props.history.push('/');
         })

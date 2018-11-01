@@ -3,7 +3,7 @@ const GoogleStrat = require('passport-google-oauth20');
 // const keys = require('./keys');
 const User = require('../app/models/user-model');
 require('dotenv').config();
-
+console.log(process.env.CLIENTID)
 passport.serializeUser((user, done) => {
     done(null, user.id)
 })
@@ -21,7 +21,7 @@ proxy: true
 }, (accessToken, refreshToken, profile, done) => {
     User.findOne({
         googleId: profile.id
-    }).then((currentUser) => { 
+    }).then((currentUser) => {
         if(currentUser) {
                 done(null, currentUser)
         } else {
@@ -31,7 +31,7 @@ proxy: true
             }).save()
               .then((newUser) => {
                   done(null, newUser)
-              })  
+              })
         }
     })
 })
