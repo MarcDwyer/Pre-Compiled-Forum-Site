@@ -8,16 +8,10 @@ import {Link} from 'react-router-dom';
 class CreatePost extends Component {
     render() {
         const {handleSubmit, user} = this.props;
-        if (!user) {
-            return (
-                <div>
-                    <Navbar />
-                <h4>Please sign in to create a post</h4>
-                </div>
-            );
-        }
+
         return (
-            <div>
+            <div className="topmodal">
+              <div className="modaldiv postcreator">
                 <div className="container makewhite mt-3">
             <form className="form-group" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
@@ -33,6 +27,7 @@ class CreatePost extends Component {
                 <button type="submit" className="btn btn-primary">Submit</button>
                 <Link className="btn btn-danger ml-1" to="/">Cancel</Link>
             </form>
+            </div>
             </div>
             </div>
         );
@@ -68,8 +63,8 @@ class CreatePost extends Component {
 
     }
     onSubmit(values) {
-        values.username = this.props.user.user;
-        values.userId = this.props.user.id;
+        values.username = this.props.user ? this.props.user.user : 'Anonymous';
+        values.userId = this.props.user ? this.props.user.user.id : 'Anonymous';
         this.props.createPost(values, () => {
             this.props.history.push('/');
         })

@@ -8,7 +8,7 @@ module.exports = function(app, db) {
             if (err) {
                 res.send({'error': 'error has occured'})
             } else {
-                res.send(result)
+                res.send(result);
         }
 })
 })
@@ -18,7 +18,7 @@ module.exports = function(app, db) {
             if (err) {
                 res.send({'error': 'error has occured'})
             } else {
-                res.send(result.ops)
+                res.send(...result.ops)
         }
 })
 })

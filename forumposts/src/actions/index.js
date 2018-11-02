@@ -18,7 +18,7 @@ export function getPosts() {
     }
 }
 
-export function createPost(post, callback) {
+export async function createPost(post, callback) {
     const newPost = {
         username: post.username,
         title: post.title,
@@ -26,13 +26,20 @@ export function createPost(post, callback) {
         body: post.body,
         date: new Date()
     }
-
-     const req = axios.post('/api/create', qs.stringify(newPost))
-                    .then(() => callback());
+'application/x-www-form-urlencoded'
+    const postPost = await fetch('/api/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: qs.stringify(newPost)
+    })
+    const dataPost = await postPost.json();
+    callback();
 
     return {
-        type: POST_POST,
-        payload: req
+      type: POST_POST,
+      payload: dataPost
     }
 }
 
@@ -78,9 +85,10 @@ export function deletePoster(id, callback) {
        }
    })
    .then(() => callback());
+   console.log(id);
  return {
      type: DELETE_POST,
-     case: id
+     payload: id
  }
 }
 

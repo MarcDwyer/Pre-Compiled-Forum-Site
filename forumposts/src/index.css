@@ -36,15 +36,15 @@ nav {
   color: black;
 }
 .list-group-item:last-child {
-       border-top-left-radius: 0 !important; 
+       border-top-left-radius: 0 !important;
         border-top-right-radius: 0 !important;
-        border-bottom-left-radius: 0 !important; 
+        border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
 }
 .list-group-item:first-child {
-  border-top-left-radius: 0 !important; 
+  border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important; 
+  border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
 .posters:hover {
@@ -79,6 +79,7 @@ nav {
   background-color: #dd4b39;
   height: 100%;
   border:none;
+  width: 100%;
 
 }
 .googlebut:hover {
@@ -88,9 +89,7 @@ nav {
 .dropwider {
   text-align: center;
   width: 200px;
-  top: 118%;
   left: -75px;
-  border-radius: 5px;
 }
 .centergoogle {
   margin: auto;
@@ -139,4 +138,10 @@ nav {
 a:hover {
   color: inherit;
   text-decoration: none;
+}
+.dropwider {
+  background-color: #dd4b39;
+}
+.postcreator {
+  background-color: transparent;
 }

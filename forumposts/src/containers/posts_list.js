@@ -33,17 +33,21 @@ class App extends Component {
       </div>
     );
   }
+
   renderPosts() {
     const {posts} = this.props;
-   return _.map(posts, post => {
-   const path = `/posts/${post._id}`;
-    return (
+    const sorteddate = Object.values(posts).sort((a, b) => {
+      return +a.date > +b.date ? 1 : -1;
+    })
 
-      <Link to={path} key={post._id || post.key} className="posts">
+   return sorteddate.map(({ _id, username, title, comments }) => {
+   const path = `/posts/${_id}`;
+    return (
+      <Link to={path} key={_id} className="posts">
       <li className="list-group-item posters">
       <div className="">
-      <h6><strong>{post.title}</strong></h6><small><span>created by <strong>{post.username}</strong></span></small></div>
-      <small><span>{!post.comments ? '0' : post.comments.length} comments</span></small>
+      <h6><strong>{title}</strong></h6><small><span>created by <strong>{username}</strong></span></small></div>
+      <small><span>{!comments ? '0' : comments.length} comments</span></small>
       </li>
     </Link>
    );
@@ -51,20 +55,14 @@ class App extends Component {
 }
 authTrue() {
   const {user} = this.props;
-  if (user) {
+
     return (
       <div>
       <Link className="btn btn-primary help mt-3 mb-3 ml-3" to="/create-post">Create Post</Link>
       </div>
     );
-  } else {
-    return (
-    <h4 className="btn help mt-3 mb-3">Sign in to Create a Post</h4>
-    );
-  }
 }
 }
-
 function getProps({posts, user}) {
   return {
     posts,

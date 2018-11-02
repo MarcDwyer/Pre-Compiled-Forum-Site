@@ -25,7 +25,6 @@ class PostShow extends Component {
   }
     render() {
         const {post} = this.props;
-        console.log('mounted')
         if(!post) {
             return <div>Loading...</div>
         }
@@ -105,7 +104,7 @@ class PostShow extends Component {
         }
     }
     delete(id) {
-        const {_id} = this.state.viewedPost;
+        const {_id} = this.props.post;
         this.props.deletePoster(_id, () => {
             this.props.history.push('/');
         })

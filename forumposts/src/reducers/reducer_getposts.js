@@ -10,7 +10,7 @@ export default function(state = null, action) {
     }
     switch(action.type) {
         case POST_POST:
-        return {...state, ...action.payload}
+        return {...state, [action.payload._id]: action.payload}
     }
 
     switch(action.type) {
