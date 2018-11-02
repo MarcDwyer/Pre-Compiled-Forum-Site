@@ -18,7 +18,6 @@ class CreatePost extends Component {
         }
         return (
             <div>
-                <Navbar />
                 <div className="container makewhite mt-3">
             <form className="form-group" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field

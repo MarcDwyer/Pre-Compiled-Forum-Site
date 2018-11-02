@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import _ from 'lodash';
 
 
-export default function(state = {}, action) {
+export default function(state = null, action) {
     switch (action.type) {
         case GET_POSTS:
         return _.mapKeys(action.payload.data, '_id');
@@ -31,7 +31,7 @@ export default function(state = {}, action) {
     }
     switch(action.type) {
         case USER_POSTS:
-        return action.payload;
+        return _.mapKeys(action.payload, '_id');
     }
     return state;
 }

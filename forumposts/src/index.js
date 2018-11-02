@@ -9,18 +9,17 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import './index.css';
 import PostsList from './containers/posts_list';
-// import PostShow from './containers/show_post';
-import UserPosts from './containers/userposts';
 
+import UserPosts from './containers/userposts';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 unregister();
 ReactDOM.render(<Provider store={createStoreWithMiddleware(reducers)}>
 <BrowserRouter>
-<Switch>
+  <Switch>
 <Route path='/user-posts' component={UserPosts} />
-<Route path='/' component={PostsList}/>
+<Route  path='/' component={PostsList}/>
 </Switch>
 </BrowserRouter>
 </Provider>

@@ -4,7 +4,7 @@ import {getPosts} from '../actions/index';
 import Navbar from '../components/navbar';
 import {Route, Link} from 'react-router-dom';
 import PostShow from './show_post';
-
+import CreatePost from './new_post';
 import _ from 'lodash';
 
 
@@ -21,6 +21,7 @@ class App extends Component {
       <div>
         <Navbar />
         <Route path='/posts/:id' component={PostShow} />
+        <Route path='/create-post' component={CreatePost} />
       <div className="app">
       <div className="fix">
       {this.authTrue()}

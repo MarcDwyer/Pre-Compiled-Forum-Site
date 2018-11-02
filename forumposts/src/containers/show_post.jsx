@@ -16,20 +16,16 @@ class PostShow extends Component {
         const {id} = this.props.match.params;
 
         this.props.getPost(id);
-
-        document.body.addEventListener('keydown', (e) => {
-            if (e.keyCode === 27) this.props.history.push('/');
-            return;
-            })
-            document.body.addEventListener('click', (e) => {
-                if (e.target.classList.value === 'topmodal') this.props.history.push('/');
-                return;
-                })
+        document.body.addEventListener('keydown', this.handleExit)
+        document.body.addEventListener('click', this.handleExit);
         }
-
+  componentWillUnmount() {
+    document.body.removeEventListener('keydown', this.handleExit);
+    document.body.removeEventListener('click', this.handleExit);
+  }
     render() {
-        console.log('asdaqwdq')
         const {post} = this.props;
+        console.log('mounted')
         if(!post) {
             return <div>Loading...</div>
         }
@@ -114,10 +110,22 @@ class PostShow extends Component {
             this.props.history.push('/');
         })
     }
+    handleExit = (e) => {
+      if (e.type === 'keydown') {
+        if (e.keyCode === 27) {
+          this.props.history.goBack();
+        }
+      } else {
+        if (e.target.classList.value.includes('topmodal')) {
+          this.props.history.goBack();
+        }
+      }
+
+    }
 }
 
 function getProps({posts, user}, ownProps) {
-  
+
     return {
         user,
         post: posts[ownProps.match.params.id],
