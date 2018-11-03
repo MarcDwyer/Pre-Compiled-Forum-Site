@@ -5,8 +5,18 @@ import {createPost} from '../actions/index';
 import {Link} from 'react-router-dom';
 
 class CreatePost extends Component {
+    componentDidMount() {
+        document.body.addEventListener('keydown', this.handleExit)
+        document.body.addEventListener('click', this.handleExit);
+        
+    }
+
+    componentWillUnmount() {
+        document.body.removeEventListener('keydown', this.handleExit);
+        document.body.removeEventListener('click', this.handleExit);
+}
     render() {
-        const {handleSubmit, user} = this.props;
+        const {handleSubmit} = this.props;
 
         return (
             <div className="topmodal">
@@ -68,6 +78,23 @@ class CreatePost extends Component {
             this.props.history.push('/');
         })
     }
+    handleExit = (e) => {
+
+        if (e.type === 'keydown') {
+          if (e.keyCode === 27) {
+            this.props.history.goBack();
+          }
+        } else {
+            const val = new RegExp(e.target.classList.value);
+            const str = /modaldiv|topmodal|postcreator/;
+            const checkClass = str.test(val);
+
+          if (checkClass) {
+            this.props.history.goBack();
+          }
+        }
+  
+      }
 }
 function getProps({user}) {
     return {

@@ -3,7 +3,7 @@ const GoogleStrat = require('passport-google-oauth20');
 // const keys = require('./keys');
 const User = require('../app/models/user-model');
 require('dotenv').config();
-console.log(process.env.CLIENTID)
+
 passport.serializeUser((user, done) => {
     done(null, user.id)
 })

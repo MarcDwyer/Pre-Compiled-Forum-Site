@@ -113,6 +113,8 @@ nav {
   margin-left: auto;
   margin-right: auto;
   overflow-y: scroll;
+  margin-top: 15px;
+  height: 92%;
 }
 .modalcontent {
   display: flex;
@@ -126,8 +128,7 @@ nav {
 }
 .blackbar {
   width: 100%;
-  background-color: black;
-  color: white;
+  color: black;
   text-align: center;
 }
 .posts {

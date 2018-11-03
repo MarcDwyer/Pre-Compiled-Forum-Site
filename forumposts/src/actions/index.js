@@ -58,7 +58,8 @@ export function postComment(id, comment, username) {
         _id: id,
         comment: comment,
         user: newuser
-    }
+    };
+
     const str = qs.stringify(obj);
      axios.put('/api/add', str)
     return {
@@ -83,7 +84,6 @@ export async function getUser() {
    }
     }
 
-
 export function deletePoster(id, callback) {
    axios.delete('/api/delete', {
        params: {
@@ -91,7 +91,6 @@ export function deletePoster(id, callback) {
        }
    })
    .then(() => callback());
-   console.log(id);
  return {
      type: DELETE_POST,
      payload: id
