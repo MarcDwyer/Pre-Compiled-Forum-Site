@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import Navbar from '../components/navbar';
 import {Field, reduxForm} from 'redux-form';
 import {createPost} from '../actions/index';
 import {Link} from 'react-router-dom';

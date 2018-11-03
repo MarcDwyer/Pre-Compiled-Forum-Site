@@ -5,18 +5,16 @@ import Navbar from '../components/navbar';
 import {Route, Link} from 'react-router-dom';
 import PostShow from './show_post';
 import CreatePost from './new_post';
-import _ from 'lodash';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.getPosts();
   }
   render() {
     if (!this.props.posts) return (<h6>Loading...</h6>);
+
+    document.body.style.overflow = '';
     return (
       <div>
         <Navbar />
@@ -54,7 +52,6 @@ class App extends Component {
   })
 }
 authTrue() {
-  const {user} = this.props;
 
     return (
       <div>
@@ -63,10 +60,9 @@ authTrue() {
     );
 }
 }
-function getProps({posts, user}) {
+function getProps({posts}) {
   return {
-    posts,
-    user
+    posts
   }
 }
 

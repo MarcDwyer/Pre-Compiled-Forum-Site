@@ -10,7 +10,6 @@ export const USER_POSTS = 'ASDASDADSASD';
 
 
 export function getPosts() {
-  console.log('aaaaaa')
     const request = axios.get('/api/data');
     return {
         type: GET_POSTS,
@@ -26,7 +25,7 @@ export async function createPost(post, callback) {
         body: post.body,
         date: new Date()
     }
-'application/x-www-form-urlencoded'
+
     const postPost = await fetch('/api/create', {
       method: 'POST',
       headers: {
@@ -68,15 +67,22 @@ export function postComment(id, comment, username) {
     }
 }
 
-export function getUser() {
-   const req = axios.get('/login');
-   if (!req) return;
-
-   return {
-       type: USER,
-       payload: req
+export async function getUser() {
+    try {
+      const fetchLogin = await fetch('/login');
+      const dataLogin = await fetchLogin.json();
+      return {
+          type: USER,
+          payload: dataLogin
+      }
+   } catch(err) {
+     return {
+         type: USER,
+         payload: null
+     }
    }
-}
+    }
+
 
 export function deletePoster(id, callback) {
    axios.delete('/api/delete', {

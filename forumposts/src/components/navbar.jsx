@@ -8,6 +8,10 @@ class Navbar extends Component {
     componentDidMount() {
         this.props.getUser();
     }
+
+    componentDidUpdate(prevProps) {
+  
+    }
 render() {
     const {user} = this.props;
     return (
@@ -28,15 +32,15 @@ renderAuth() {
     const {user} = this.props;
     if (user) {
         return (
-            <div className="mr-4">
+            <div className="mr-4 fixthis">
             <Link to="/user-posts" target="_self" className="btn">Check Posts</Link>
-            <a href="/auth/logout" target="_self" className="btn">Logout</a>
+            <a href="http://localhost:5000/auth/logout" target="_self" className="btn">Logout</a>
             </div>
         )
     } else {
         return(
 
-            <a href="/auth/google" target="_self" className="btn btn-light googlebut align-middle">Sign in with Google+</a>
+            <a href="http://localhost:5000/auth/google" target="_self" className="btn btn-light googlebut align-middle">Sign in with Google+</a>
 
         );
     }

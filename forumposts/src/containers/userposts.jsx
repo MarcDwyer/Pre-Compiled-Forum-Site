@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
  import {getUserPosts, getUser} from '../actions/index';
 import {Link, Route} from 'react-router-dom';
 import Navbar from '../components/navbar';
-import _ from 'lodash';
 import PostShow from './show_post';
 import uuid from 'uuid';
 

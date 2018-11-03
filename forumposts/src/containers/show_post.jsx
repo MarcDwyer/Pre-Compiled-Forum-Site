@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {getPost, postComment, deletePoster} from '../actions/index';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import uuid from 'uuid';
 
 class PostShow extends Component {
@@ -28,6 +28,7 @@ class PostShow extends Component {
         if(!post) {
             return <div>Loading...</div>
         }
+        document.body.style.overflow = 'hidden';
             return (
               <div className="topmodal">
             <div className="modaldiv">
@@ -51,7 +52,7 @@ class PostShow extends Component {
                 />
                 <button onClick={(e) => this.updateComment(e)} type="submit" className="btn btn-comment">Comment</button>
                 <ul className="list-group comments mt-4">
-                <h4>Comments</h4>
+                <h4>Comments <small>{post.comments.length}</small></h4>
                 {this.renderComments()}
             </ul>
             </div>
@@ -88,9 +89,9 @@ class PostShow extends Component {
         if (comments.length === 0) {
             return <h6>No comments...</h6>
         } else {
-            return comments.map(comment => {
+            return comments.map(( {comment, user} ) => {
                 return (
-                    <li className="list-group-item comments" key={uuid()}>{comment.comment} <small className="float-right">Created by {comment.user}</small></li>
+                    <li className="list-group-item comments" key={uuid()}>{comment} <small className="float-right">Created by {user}</small></li>
                 );
             })
         }

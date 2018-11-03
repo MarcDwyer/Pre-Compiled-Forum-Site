@@ -88,8 +88,8 @@ nav {
 }
 .dropwider {
   text-align: center;
-  width: 200px;
-  left: -75px;
+
+  left: -35px;
 }
 .centergoogle {
   margin: auto;
@@ -100,7 +100,7 @@ nav {
 .topmodal {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   display: flex;
   background-color: rgba(5, 0, 0, 0.81);
@@ -112,7 +112,7 @@ nav {
   background-color: white;
   margin-left: auto;
   margin-right: auto;
-  height: 98%;
+  overflow-y: scroll;
 }
 .modalcontent {
   display: flex;
@@ -140,8 +140,14 @@ a:hover {
   text-decoration: none;
 }
 .dropwider {
-  background-color: #dd4b39;
+  background-color: transparent;
+  border: none;
 }
 .postcreator {
   background-color: transparent;
+  overflow: hidden;
+}
+.fixthis {
+  background-color: white;
+  border: solid 1px #eee;
 }
