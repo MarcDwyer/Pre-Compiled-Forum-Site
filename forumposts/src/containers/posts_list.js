@@ -25,7 +25,7 @@ class App extends Component {
       {this.authTrue()}
       </div>
       <ul className='form-group cmt'>
-      {this.renderPosts(this.addRoute)}
+      {this.renderPosts()}
       </ul>
       </div>
       </div>
