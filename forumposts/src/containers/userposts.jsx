@@ -48,10 +48,10 @@ styles = {
       <div>
       <Navbar />
       <Route path={`${match.url}/:id`} component={ShowPost} />
-      <div className="container" style={this.styles.container}>
-        <h4>{user.user + "'s"} recent posts</h4>
+      <div className="app" style={this.styles.container}>
+        <h4 className="ml-3">{user.user + "'s"} recent posts</h4>
         <div className="fix">
-        <Link to={'/'} className="btn btn-warning help mt-3 mb-3">Go home</Link>
+        <Link to={'/'} className="btn btn-warning help mt-3 mb-3 ml-3">Go home</Link>
         </div>
         <ul className="form-group cmt">
           {this.renderPosts()}

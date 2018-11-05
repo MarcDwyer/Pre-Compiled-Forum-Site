@@ -13,13 +13,14 @@ import PostsList from './containers/posts_list';
 import UserPosts from './containers/userposts';
 
 
+
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 unregister();
 ReactDOM.render(<Provider store={createStoreWithMiddleware(reducers)}>
 <BrowserRouter>
-  <Switch>
+<Switch>
 <Route path='/user-posts' component={UserPosts} />
-<Route path='/' component={PostsList}/>
+<Route path='/' component={PostsList} />
 </Switch>
 </BrowserRouter>
 </Provider>

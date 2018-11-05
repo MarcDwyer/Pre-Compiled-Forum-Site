@@ -42,7 +42,7 @@ app.listen(port, () => {
 })
 })
 
- //  app.use('/', express.static('./forumposts/build'));
+  // app.use('/', express.static(__dirname + '/forumposts/build'));
 
 
 mongoose.connect(db.url, () => {

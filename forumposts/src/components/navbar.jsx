@@ -29,8 +29,8 @@ renderAuth() {
     if (user) {
         return (
             <div className="mr-4 fixthis">
-            <Link to="/user-posts" target="_self" className="btn">Check Posts</Link>
-            <a href="/auth/logout" target="_self" className="btn">Logout</a>
+            <Link to="/user-posts" className="btn">Check Posts</Link>
+            <a href="/auth/logout" className="btn">Logout</a>
             </div>
         )
     } else {
